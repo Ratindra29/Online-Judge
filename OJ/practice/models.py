@@ -20,7 +20,7 @@ class Problem(models.Model):
    score=models.IntegerField(default=0)
 
    def __str__(self):
-       return str(self.problemid)
+       return str(self.problemid) + " " +self.problemname
 
 class Submission(models.Model):
     problemid=models.ForeignKey(Problem, on_delete=models.CASCADE)
@@ -29,7 +29,7 @@ class Submission(models.Model):
     verdict=models.CharField(max_length=20)
   
     def __str__(self):
-       return str(self.problemid)
+       return str(self.problemid) + str(self.submissiontime)
 
 class Testcase(models.Model):
     problemid=models.ForeignKey(Problem,on_delete=models.CASCADE)

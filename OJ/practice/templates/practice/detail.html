@@ -8,16 +8,16 @@
     </div>
 </div>
 
-  <!--form action add krna baaki hai -->
+<form action='{% url 'practice:submit' problem.problemid %}' method="POST">
 {% csrf_token %}
         <fieldset>
           <div class="form-group">
-            <textarea name="code" id="code" class="form-control" rows="20" ></textarea>
+            <textarea <input type="text" name="code" id="code" class="form-control" rows="20" ></textarea>
           </div>
           <div class="form-group">
             <label >Select Language</label>
             <select name="language" id="language" class="form-select">
-              <option >Python</option>
+              <option >C++</option>
             </select>
           </div> 
           <button type="submit" class="btn btn-primary">Submit</button>
