@@ -5,7 +5,7 @@
 {% if Problem_list %}
     <ul>
     {% for problem in Problem_list %}
-        <li><a href="{% url 'practice:detail' problem.problemid %}">{{ problem.description }}</a></li>
+        <li><a href="{% url 'practice:detail' problem.problemid %}">{{ problem.problemname }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
