@@ -5,6 +5,11 @@ import subprocess,os,sys
 import filecmp
 import docker
 
+from pathlib import Path
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 import os.path
 
 from .models import Problem,Testcase,Submission,User
@@ -40,13 +45,17 @@ def results(request, problemid):
 def submit(request, problemid):
 
     input=Testcase.objects.get(pk=problemid).inputdoc
+    input=os.path.join(BASE_DIR, input)
     output=Testcase.objects.get(pk=problemid).outputdoc
-  
+    output=os.path.join(BASE_DIR, output)
    #We can Store the submitted file in this path with dynamic name (problemid)
-    temp =r"C:\Users\Ratin\Project\OJ\Submissions\%s"%problemid + ".cpp" 
+    temp =r"Submissions\%s"%problemid + ".cpp" 
+    temp=os.path.join(BASE_DIR, temp)
+    
 
    #This is the file where we store useroutput to compare with expected output
-    tester=r"C:\Users\Ratin\Project\OJ\tester.txt"
+    tester=r"tester.txt"
+    tester=os.path.join(BASE_DIR, tester)
     
     #creating the submission file
     code_file=open(temp,'wb+') 
@@ -97,7 +106,7 @@ def submit(request, problemid):
     #the compiled code is run and output is saved in output.txt file in container
 
     process=subprocess.run(['docker','exec',container.id,'bash','-c',"./a.out <input.txt>output.txt"],shell=True)
-    subprocess.run(['docker','cp',container.id+':output.txt',tester],shell=True)
+    subprocess.run(['docker','cp',container.id +':output.txt',tester],shell=True)
 
     #-------------------------DOCKER USE FINISHED-------------------------------------------------------------------------------------------------------------------------------------------
     
