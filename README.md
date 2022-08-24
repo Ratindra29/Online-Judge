@@ -3,7 +3,7 @@ This is a Platform built using Django framework where a List of Progrmming Probl
 
 It evaluated the code based on stored testcases and gives verdict such as Answer Correct, Wrong Answer , Compilation Error, Runtime Error, etc.
 
-The code is evaluated using Subprocess module, Docker Continers and Docker SDK for Python, in order to make the evaluation more Secure from Mallicious Codes.
+The code is evaluated using Subprocess module, Docker Containers and Docker SDK for Python, in order to make the evaluation more Secure from Mallicious Codes.
 
 Admin can perform all CRUD operations on the Problems,Testcases,Users and Submissions stored in the database.
 
