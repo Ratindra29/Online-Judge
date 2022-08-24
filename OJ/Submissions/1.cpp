@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+
 using namespace std;
 
 int main()
@@ -11,7 +12,7 @@ while(n)
 int x,y;
 
 cin>>x>>y;
-cout<<x*y<<endl;
+cout<<x+y<<endl;
 
 n--;
 
